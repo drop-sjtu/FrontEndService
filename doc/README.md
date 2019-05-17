@@ -6,5 +6,5 @@ This repo's coding style is based on `Google Java Style Guide`. Check [this link
 
 ## Tech stack
 - Language: Javascript
-- Framework: React/Vue
+- Framework: React
 - CI/CD: jenkins
