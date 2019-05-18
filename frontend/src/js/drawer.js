@@ -128,7 +128,7 @@ class PersistentDrawerLeft extends React.Component {
         else{
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/login",
+                url: global.configuration.website + ":" + global.configuration.port + global.configuration.login,
                 contentType: 'application/json',
                 data: JSON.stringify(saveDataAry),
                 success: function (data) {
@@ -147,7 +147,7 @@ class PersistentDrawerLeft extends React.Component {
         else{
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/api/wordladder?from=" + fr + "&to=" + to,
+                url: global.configuration.website + ":" + global.configuration.port + "?from=" + fr + "&to=" + to,
                 success: function (data) {
                     console.log(data);
                     alert("使用成功!");
