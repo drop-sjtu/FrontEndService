@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## docker
+
+To build the docker image, you can run:
+
+### `docker build . -t react-docker`
+
+**This command has an error running in Windows.** Because there isn't a 
+director "/usr/share/nginx/html"
+
 ## Available Scripts
 
 In the project directory, you can run:
