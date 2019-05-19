@@ -11,9 +11,13 @@ pipeline {
             steps {
                 echo 'Building..'
                 cd login
-                mvn clean package dockerfile:build -Dmaven.test.skip=true
+                mvn clean
+                mvn package -Dmaven.test.skip=true
+                mvn dockerfile:build
                 cd ../play
-                mvn clean package dockerfile:build -Dmaven.test.skip=true
+                mvn clean
+                mvn package -Dmaven.test.skip=true
+                mvn dockerfile:build
             }
         }
         stage('Test') {
