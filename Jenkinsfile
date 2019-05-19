@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'ls'
                 sh 'mvn clean'
                 sh 'mvn package -Dmaven.test.skip=true'
             }
@@ -12,7 +13,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'ls'
                 sh 'mvn test'
             }
         }
