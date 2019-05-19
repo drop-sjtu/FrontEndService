@@ -15,7 +15,7 @@
 
     <properties>
         <docker.image.prefix>shenjiahuan</docker.image.prefix>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
