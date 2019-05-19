@@ -17,7 +17,12 @@ pipeline {
                     dir('play') {
                         sh 'mvn dockerfile:build'
                     }
-                }    
+                }
+
+                dir('frontend') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
 
@@ -26,6 +31,11 @@ pipeline {
                 echo 'Testing..'
                 dir('backend') {
                     sh 'mvn test'
+                }
+
+                dir('frontend') {
+                    sh 'npm install'
+                    sh 'npm test'
                 }
             }
         }
