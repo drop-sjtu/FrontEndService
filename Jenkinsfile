@@ -9,13 +9,15 @@ pipeline {
                     sh 'mvn clean'
                     sh 'mvn package -Dmaven.test.skip=true'
 
+                    /*
                     dir('login') {
-                        sh 'sudo mvn dockerfile:build'
+                        sh 'mvn dockerfile:build'
                     }
 
                     dir('play') {
-                        sh 'sudo mvn dockerfile:build'
+                        sh 'mvn dockerfile:build'
                     }
+                    */
                 }
 
                 dir('frontend') {
