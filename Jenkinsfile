@@ -33,11 +33,6 @@ pipeline {
                 dir('backend') {
                     sh 'mvn test'
                 }
-
-                dir('frontend') {
-                    sh 'npm install'
-                    sh 'npm test'
-                }
             }
         }
 
