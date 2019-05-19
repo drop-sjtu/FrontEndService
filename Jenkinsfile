@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                /*
+
                 dir('backend') {
                     sh 'mvn clean'
                     sh 'mvn package -Dmaven.test.skip=true'
@@ -18,26 +18,30 @@ pipeline {
                         sh 'mvn dockerfile:build'
                     }
                 }
-                */
+
+                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
+                */
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                /*
+
                 dir('backend') {
                     sh 'mvn test'
                 }
-                */
+
+                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm test'
                 }
+                */
             }
         }
 
