@@ -20,7 +20,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
-import $ from 'jquery';
+import axios from "axios";
 
 const drawerWidth = 240;
 
@@ -93,7 +93,8 @@ class PersistentDrawerLeft extends React.Component {
     state = {
         open: false,
         showLogin: show,
-        showFunc: hide
+        showFunc: hide,
+        token: null,
     };
 
     handleDrawerOpen = () => {
@@ -126,16 +127,13 @@ class PersistentDrawerLeft extends React.Component {
         if(saveDataAry["username"] === "" || saveDataAry["password"] === "")
             alert("请输入用户名或密码");
         else{
-            $.ajax({
-                type: "POST",
-                url: global.configuration.website + ":" + global.configuration.port + global.configuration.login,
-                contentType: 'application/json',
-                data: JSON.stringify(saveDataAry),
-                success: function (data) {
-                    console.log(data);
+            axios.post(global.configuration.login, saveDataAry).then(
+                data => {
+                    console.log(data.data.result);
+                    this.setState({token: data.data.result});
                     alert("welcome!");
                 }
-            });
+            );
         }
     };
 
@@ -145,14 +143,14 @@ class PersistentDrawerLeft extends React.Component {
         if(fr === "" || to === "")
             alert("请填上所有的空!");
         else{
-            $.ajax({
-                type: "GET",
-                url: global.configuration.website + ":" + global.configuration.port + "?from=" + fr + "&to=" + to,
-                success: function (data) {
-                    console.log(data);
+            const headers = "Bearer " + this.state.token;
+            console.log(headers);
+            axios.get(global.configuration.wordladder + "?from=" + fr + "&to=" + to, {headers: {Authorization: headers}}).then(
+                data => {
+                    console.log(data.data.result);
                     alert("使用成功!");
                 }
-            });
+            );
         }
     };
 
