@@ -5,17 +5,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'cd backend'
-                sh 'ls'
-                sh 'mvn clean'
-                sh 'mvn package -Dmaven.test.skip=true'
+                dir('backend') {
+                    sh 'ls'
+                    sh 'mvn clean'
+                    sh 'mvn package -Dmaven.test.skip=true'
+                }    
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'cd backend'
-                sh 'mvn test'
+                dir('backend') {
+                    sh 'mvn test'
+                }
             }
         }
         stage('Deploy') {
