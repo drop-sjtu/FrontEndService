@@ -20,6 +20,7 @@ pipeline {
                 }
                 */
                 dir('frontend') {
+                    sh 'echo $PATH'
                     sh 'nvm list'
                     sh 'npm install'
                     sh 'npm run build'
