@@ -22,6 +22,7 @@ pipeline {
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm run build'
+                    sh 'docker build . -t react-docker'
                 }
             }
         }
