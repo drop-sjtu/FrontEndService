@@ -19,12 +19,10 @@ pipeline {
                     }
                 }
 
-                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
-                */
             }
         }
 
@@ -36,12 +34,10 @@ pipeline {
                     sh 'mvn test'
                 }
 
-                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm test'
                 }
-                */
             }
         }
 
