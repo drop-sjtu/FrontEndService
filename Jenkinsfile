@@ -2,22 +2,21 @@ pipeline {
     agent any
     
     tools {
-        maven 'Maven'
-        jdk 'jdk-1.8.102'
+        jdk 'jdk8'
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn clean'
-                sh 'mvn package -Dmaven.test.skip=true'
+                sh './mvnw clean'
+                sh './mvnw package -Dmaven.test.skip=true'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn test'
+                sh './mvnw test'
             }
         }
         stage('Deploy') {
