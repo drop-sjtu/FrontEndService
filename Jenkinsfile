@@ -19,6 +19,7 @@ pipeline {
                 }
 
                 dir('frontend') {
+                    sh 'nvm list'
                     sh 'npm install'
                     sh 'npm run build'
                 }
