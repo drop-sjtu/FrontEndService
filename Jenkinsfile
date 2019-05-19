@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'cd backend'
+                sh 'ls'
                 sh 'mvn clean'
                 sh 'mvn package -Dmaven.test.skip=true'
             }
