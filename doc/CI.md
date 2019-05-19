@@ -1,4 +1,7 @@
 # CI
+[![Build Status](http://dropsjtu.westus.cloudapp.azure.com/buildStatus/icon?job=drop-sjtu%2FdropSJTU%2Fmaster&subject=master)](http://dropsjtu.westus.cloudapp.azure.com/job/drop-sjtu/job/dropSJTU/job/master/)
+[![Build Status](http://dropsjtu.westus.cloudapp.azure.com/buildStatus/icon?job=drop-sjtu%2FdropSJTU%2Fdevelop&subject=dev)](http://dropsjtu.westus.cloudapp.azure.com/job/drop-sjtu/job/dropSJTU/job/develop/)
+
 Public URL: http://dropsjtu.westus.cloudapp.azure.com/
 
 We use Jenkins deployed on Azure as our CI/CD system. You can refer to [Microsoft Azure Documentation](https://docs.microsoft.com/en-us/azure/jenkins/) for more details.
