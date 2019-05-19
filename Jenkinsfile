@@ -9,7 +9,6 @@ pipeline {
                     sh 'mvn clean'
                     sh 'mvn package -Dmaven.test.skip=true'
 
-                    /*
                     dir('login') {
                         sh 'mvn dockerfile:build'
                     }
@@ -17,13 +16,14 @@ pipeline {
                     dir('play') {
                         sh 'mvn dockerfile:build'
                     }
-                    */
                 }
 
+                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
+                */
             }
         }
 
@@ -34,10 +34,12 @@ pipeline {
                     sh 'mvn test'
                 }
 
+                /*
                 dir('frontend') {
                     sh 'npm install'
                     sh 'npm test'
                 }
+                */
             }
         }
 
