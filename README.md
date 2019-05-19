@@ -4,6 +4,8 @@
 
 Drop SJTU is an application to help students play truant and finally drop out.
 
+## Documents
+The `doc` folder contains all of our documents, just RTFD.
 
 ## Tools
 - gitflow.sh: auto configure the git flow.
