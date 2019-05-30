@@ -17,6 +17,10 @@ pipeline {
                     dir('play') {
                         sh 'mvn dockerfile:build'
                     }
+
+                    dir('eureka-server') {
+                        sh 'mvn dockerfile:build'
+                    }
                 }
 
                 dir('frontend') {
