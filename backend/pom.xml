@@ -44,6 +44,7 @@
     <modules>
         <module>login</module>
         <module>play</module>
+        <module>eureka-server</module>
     </modules>
 
 </project>
