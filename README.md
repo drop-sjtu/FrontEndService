@@ -1,6 +1,7 @@
 # dropSJTU
 [![Build Status](http://dropsjtu.westus.cloudapp.azure.com/buildStatus/icon?job=drop-sjtu%2FdropSJTU%2Fmaster&subject=master)](http://dropsjtu.westus.cloudapp.azure.com/job/drop-sjtu/job/dropSJTU/job/master/)
 [![Build Status](http://dropsjtu.westus.cloudapp.azure.com/buildStatus/icon?job=drop-sjtu%2FdropSJTU%2Fdevelop&subject=dev)](http://dropsjtu.westus.cloudapp.azure.com/job/drop-sjtu/job/dropSJTU/job/develop/)
+[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/drop-sjtu/dropSJTU&style=flat)](https://mergify.io)
 ![language](https://img.shields.io/badge/Language-Java-orange.svg)
 ![license](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
 
