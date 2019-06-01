@@ -4,6 +4,9 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -18,15 +21,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/api")
 public class ApiController {
 
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+
     @Autowired
-    private EurekaClient eurekaClient;
+    RestTemplate restTemplate;
 
     @RequestMapping("/wordladders")
     public Result callWordLadder(@RequestParam(value = "from", required = false) String from, @RequestParam(value = "to", required = false) String to) throws Exception {
-        RestTemplate restTemplate = new RestTemplate();
-        Application application = eurekaClient.getApplication("wordladder-play");
-        InstanceInfo instanceInfo = application.getInstances().get(0);
-        String url = "http://" + instanceInfo.getIPAddr() + ":" + instanceInfo.getPort() + "/wordladders";
+        String url = "http://wordladder-play/wordladders";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 
@@ -36,7 +42,7 @@ public class ApiController {
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        Result response = restTemplate.getForObject(
+        Result response = this.restTemplate.getForObject(
                 builder.toUriString(),
                 Result.class);
         return response;
