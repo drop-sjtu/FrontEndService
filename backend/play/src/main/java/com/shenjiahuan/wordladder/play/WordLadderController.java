@@ -25,7 +25,6 @@ public class WordLadderController {
     public WordLadderResult wordLadder(@RequestParam(value = "from", required = false) String from, @RequestParam(value = "to", required = false) String to) {
         ArrayList<String> result = null;
         int status = 0;
-
         if (from == null || to == null) {
             status = -3;
             return new WordLadderResult(result, status);
