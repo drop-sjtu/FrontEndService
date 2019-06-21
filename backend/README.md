@@ -23,7 +23,7 @@ docker container network create -d bridge drop-internal
 docker run --network drop-internal --name eureka -p 8761:8761 shenjiahuan/wordladder-eureka-server
 docker run --network drop-internal --name login --env EUREKA_SERVER=eureka -p 8080:8080 -p 9000:9000 -d shenjiahuan/wordladder-login --wordladder.port=8081
 docker run --network drop-internal --name play --env EUREKA_SERVER=eureka -p 8081:8081 -p 9001:9001 -d shenjiahuan/wordladder-play 
-docker run --network drop-internal --name gateway --env EUREKA_SERVER=eureka -p 8082:8082 -d hsc/wordladder-gateway
+docker run --network drop-internal --name gateway --env EUREKA_SERVER=eureka -p 8079:8079 -d hsc/wordladder-gateway
 ```
 A inter-container bridge network is first created. In this way, containers in the same bridge network can access each other via their name given in the command line.
 Port 8080 serves microservice login, 8081 serves microservice play, 9000 and 9001 are two ports which actuators listen.  
