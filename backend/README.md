@@ -19,7 +19,7 @@ docker pull shenjiahuan/wordladder-play
 ## Run
 To run the whole service execute the following docker commands:
 ```
-docker container network create -d bridge drop-internal
+docker network create -d bridge drop-internal
 docker run --network drop-internal --name eureka -p 8761:8761 shenjiahuan/wordladder-eureka-server
 docker run --network drop-internal --name login --env EUREKA_SERVER=eureka -p 8080:8080 -p 9000:9000 -d shenjiahuan/wordladder-login --wordladder.port=8081
 docker run --network drop-internal --name play --env EUREKA_SERVER=eureka -p 8081:8081 -p 9001:9001 -d shenjiahuan/wordladder-play 
