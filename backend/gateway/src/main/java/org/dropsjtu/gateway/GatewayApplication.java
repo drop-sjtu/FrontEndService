@@ -1,4 +1,4 @@
-package org.dropsjtu.play;
+package org.dropsjtu.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,10 +10,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableCircuitBreaker
-public class PlayApplication {
+public class GatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PlayApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 
 }
