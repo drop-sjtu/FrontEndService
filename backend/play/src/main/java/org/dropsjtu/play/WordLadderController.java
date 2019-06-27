@@ -1,5 +1,6 @@
 package org.dropsjtu.play;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 public class WordLadderController {
     private WordLadder wordLadder;
 
+    @Autowired
+    private WordLadderFeign auth;
+
     @PostConstruct
     private void init() {
         try {
@@ -23,7 +27,11 @@ public class WordLadderController {
 
     @RequestMapping({"/wordladders"})
     public WordLadderResult wordLadder(@RequestParam(value = "from", required = false) String from,
-                                       @RequestParam(value = "to", required = false) String to) {
+                                       @RequestParam(value = "to", required = false) String to,
+                                       @RequestParam(value = "token") String token) {
+        if (auth.check(token) != 1)
+            return new WordLadderResult(null, -4);
+
         ArrayList<String> result = null;
         int status = 0;
         if (from == null || to == null) {
