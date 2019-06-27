@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.login;
+package org.dropsjtu.login;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

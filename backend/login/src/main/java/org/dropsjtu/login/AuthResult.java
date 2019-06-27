@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.login;
+package org.dropsjtu.login;
 
 public class AuthResult {
     private int code = -1;       // 0 ok, 1 username/password wrong

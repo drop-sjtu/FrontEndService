@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.play;
+package org.dropsjtu.play;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

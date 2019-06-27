@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.play;
+package org.dropsjtu.play;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.play;
+package org.dropsjtu.play;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

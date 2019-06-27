@@ -1,4 +1,4 @@
-package org.dropsjtu.backend.play;
+package org.dropsjtu.play;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
