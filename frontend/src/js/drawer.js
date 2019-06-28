@@ -20,7 +20,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
-import axios from "axios";
+import axios from 'axios';
+import Qs from 'qs';
 
 const drawerWidth = 240;
 
@@ -94,7 +95,7 @@ class PersistentDrawerLeft extends React.Component {
         open: false,
         showLogin: show,
         showFunc: hide,
-        token: null,
+        token: "",
     };
 
     handleDrawerOpen = () => {
@@ -124,33 +125,39 @@ class PersistentDrawerLeft extends React.Component {
             username: document.getElementById("loginName").value,
             password: document.getElementById("loginPassword").value,
         };
-        if(saveDataAry["username"] === "" || saveDataAry["password"] === "")
+        if (saveDataAry["username"] === "" || saveDataAry["password"] === "")
             alert("请输入用户名或密码");
-        else{
-            axios.post(global.configuration.login, saveDataAry).then(
+        else {
+            axios.post(global.configuration.login, Qs.stringify(saveDataAry)).then(
                 data => {
-                    console.log(data.data.result);
-                    this.setState({token: data.data.result});
-                    alert("welcome!");
+                    if (data.data.code === 0) {
+                        this.setState({ token: data.data.token });
+                        alert("Login success!");
+                    }
+                    else {
+                        alert("Username or password incorrect!");
+                    }
                 }
             );
         }
     };
 
     handleFunc = () => {
-        let fr = document.getElementById("from").value;
-        let to = document.getElementById("to").value;
-        if(fr === "" || to === "")
-            alert("请填上所有的空!");
-        else{
-            const headers = "Bearer " + this.state.token;
-            console.log(headers);
-            axios.get(global.configuration.wordladder + "?from=" + fr + "&to=" + to, {headers: {Authorization: headers}}).then(
-                data => {
-                    console.log(data.data.result);
-                    alert("使用成功!");
-                }
-            );
+        if (this.state.token !== "") {
+            let fr = document.getElementById("from").value;
+            let to = document.getElementById("to").value;
+            if (fr === "" || to === "")
+                alert("请填上所有的空!");
+            else {
+                axios.get(global.configuration.wordladder + "?from=" + fr + "&to=" + to + "&token=" + this.state.token).then(
+                    data => {
+                        console.log(data.data.result);
+                        alert("使用成功!");
+                    }
+                );
+            }
+        } else {
+            alert("请登录!");
         }
     };
 

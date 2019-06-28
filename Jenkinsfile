@@ -18,7 +18,7 @@ pipeline {
                         sh 'mvn dockerfile:build'
                     }
 
-                    dir('eureka-server') {
+                    dir('eureka') {
                         sh 'mvn dockerfile:build'
                     }
 
