@@ -35,7 +35,8 @@ public class PlayApplicationTests {
         this.mockMvc.perform(get("/wordladders")
                 .param("from", "hello")
                 .param("to", "world")
-                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7"))
+                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7")
+                .param("test", "1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'status':0}"));
     }
@@ -45,7 +46,8 @@ public class PlayApplicationTests {
         this.mockMvc.perform(get("/wordladders")
                 .param("from", "successful")
                 .param("to", "fail")
-                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7"))
+                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7")
+                .param("test", "1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'status':-1}"));
     }
@@ -53,18 +55,9 @@ public class PlayApplicationTests {
     @Test
     public void accessWithoutParameters() throws Exception {
         this.mockMvc.perform(get("/wordladders")
-                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7"))
+                .param("token", "3535ce20-1b02-41fe-8e8b-e4ac5ab8d7c7")
+                .param("test", "1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'status':-3}"));
-    }
-
-    @Test
-    public void tokenNotRight() throws Exception {
-        this.mockMvc.perform(get("/wordladders")
-                .param("from", "hello")
-                .param("to", "world")
-                .param("token", "1"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'status':-4}"));
     }
 }

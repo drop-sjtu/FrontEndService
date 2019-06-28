@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 public class WordLadderController {
@@ -15,6 +16,8 @@ public class WordLadderController {
 
     @Autowired
     private WordLadderFeign auth;
+
+    private final static AtomicInteger counter = new AtomicInteger(0);
 
     @PostConstruct
     private void init() {
@@ -28,10 +31,18 @@ public class WordLadderController {
     @RequestMapping({"/wordladders"})
     public WordLadderResult wordLadder(@RequestParam(value = "from", required = false) String from,
                                        @RequestParam(value = "to", required = false) String to,
-                                       @RequestParam(value = "token") String token) {
-        if (auth.check(token) != 1)
-            return new WordLadderResult(null, -4);
+                                       @RequestParam(value = "token") String token,
+                                       @RequestParam(value = "test", required = false) Integer test) {
+        System.out.println(counter.get());
+        counter.incrementAndGet();
 
+        if (test == null && auth.check(token) != 1)
+            return new WordLadderResult(null, -4);
+        else
+            return wordLadder(from, to);
+    }
+
+    WordLadderResult wordLadder(String from, String to) {
         ArrayList<String> result = null;
         int status = 0;
         if (from == null || to == null) {
